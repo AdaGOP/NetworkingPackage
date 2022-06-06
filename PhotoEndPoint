@@ -1,0 +1,29 @@
+import Foundation
+
+public enum PhotoAPI {
+    case getPhoto(String)
+}
+
+extension PhotoAPI: EndPointType {
+    var baseUrl: String {
+        return "api.airtable.com"
+    }
+    
+    var path: String {
+        switch self {
+        case .getPhoto(let recordId):
+            return "/v0/appJQsfippD0ImsS2/DummyTable/\(recordId)"
+        }
+    }
+    
+    var method: HTTPMethod {
+        switch self {
+        case .getPhoto :
+            return .get
+        }
+    }
+    
+    var headers: HTTPHeaders? {
+        return ["Authorization": "Bearer keyP2VUTPWF7X0WB0"]
+    }
+}

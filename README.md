@@ -1,10 +1,10 @@
 # NetworkingPackage
 This package will help you to create networking layer. You can expand the layer from this package
 
-# NetworkDelegate
+## NetworkService
 
-# PhotoEndPoint
+## PhotoEndPoint
 
-# NetworkManager
+## NetworkManager
 
-# PhotoNetworkModel
+## PhotoNetworkModel

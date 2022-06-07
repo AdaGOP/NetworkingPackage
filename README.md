@@ -8,7 +8,7 @@ This code cover all about the HTTPMethod, HTTPHeader, EndPointType protocol, Net
 This is the example of how to use EndPoint type on the Network Service.
 
 ## NetworkManager
-This is the network manager that will handle the request, update the request based on what you want to do.
+This is the network manager that will handle the request, update the request based on what you want to do. The result of the request will be Data, you need to transform the data to network model
 
 ## PhotoNetworkModel
 The is the example of network model that will help you to decode the result of the network.

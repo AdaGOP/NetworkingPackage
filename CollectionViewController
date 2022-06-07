@@ -12,6 +12,7 @@ class CollectionViewController: UICollectionViewController {
     }
     
     private func setupData() {
+        ...
         let networkManager = NetworkManager()
         networkManager.networkDelegate = self
         networkManager.createRequest(with: photoEndPoint)

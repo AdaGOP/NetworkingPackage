@@ -2,9 +2,13 @@
 This package will help you to create networking layer. You can expand the layer from this package
 
 ## NetworkService
+This code cover all about the HTTPMethod, HTTPHeader, EndPointType protocol, NetworkError and NetworkDelegate. Try to add more properties based on what you need for your project. For example, if you need POST method, add a new case on HTTPMethod. It will be good if you move all the function to different swift file, so you can discover the method easily.
 
 ## PhotoEndPoint
+This is the example of how to use EndPoint type on the Network Service.
 
 ## NetworkManager
+This is the network manager that will handle the request, update the request based on what you want to do.
 
 ## PhotoNetworkModel
+The is the example of network model that will help you to decode the result of the network.

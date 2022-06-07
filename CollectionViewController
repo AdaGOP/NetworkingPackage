@@ -1,0 +1,54 @@
+import UIKit
+
+class CollectionViewController: UICollectionViewController {
+  
+    ...
+    let photoEndPoint = PhotoAPI.getPhoto("recM8z0FSZoNSn6FM")
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupData()
+        ...
+    }
+    
+    private func setupData() {
+        let networkManager = NetworkManager()
+        networkManager.networkDelegate = self
+        networkManager.createRequest(with: photoEndPoint)
+        ...
+    }
+    
+    ...
+    ...
+    ...
+}
+
+extension CollectionViewController: NetworkDelegate {
+    // Put it on your data stores or workers level
+    func onResponse(from endPoint: EndPointType?, result: Result<Data, NetworkError>) {
+        if let _ = endPoint as? PhotoAPI {
+            switch result {
+            case .success(let data):
+                do {
+                    // we decode from data to the class we have defined
+                    let decoder = JSONDecoder()
+                    let photoNetwork = try decoder.decode(PhotoNetworkModel.self, from: data)
+                    
+                    let productModel = ProductModel(photoImage: nil, photoTitle: photoNetwork.fields.title, imageSource: .remote, imageUrl: photoNetwork.fields.image.first?.url)
+                    self.photos.append(productModel)
+                    
+                    
+                    // Put it on your View level to update your view
+                    let indexPath = IndexPath(row: photos.count - 1, section: 0)
+                    DispatchQueue.main.async {
+                        self.collectionView.insertItems(at: [indexPath])
+                    }
+                } catch {
+                    print(error.localizedDescription)
+                }
+            case .failure(let error):
+                print(error.rawValue)
+            }
+        }
+    }
+}
